@@ -116,76 +116,27 @@ export default function App() {
             </Text>
           </View>
 
-          <View style={{ flexDirection: "row" }}>
-            <View style={styles.centeredView}>
-              <Modal
-                animationType="slide"
-                transparent={true}
-                visible={modal1Visible}
-                onRequestClose={() => {
-                  Alert.alert("Modal has been closed.");
-                }}
-              >
-                <View style={styles.newCenter}>
-                  <View style={styles.modalEarningView}>
-                    <Text style={styles.heading}>Earning {"\n"}</Text>
-                    <Text style={styles.modalText}>
-                      This is your ability to make money. Think about all of the
-                      different ways that you earn money. Do you have an
-                      allowance? A job? Do you receive money as a gift during
-                      different celebrations? Take time to become aware and
-                      write down all of the different ways that you bring in
-                      money.
-                    </Text>
-
-                    <TouchableHighlight
-                      style={{
-                        ...styles.openButton,
-                        backgroundColor: "#FFE694",
-                      }}
-                      onPress={() => {
-                        setModal1Visible(!modal1Visible);
-                      }}
-                    >
-                      <Text style={styles.closeStyle}>Close</Text>
-                    </TouchableHighlight>
-                  </View>
-                </View>
-              </Modal>
-
-              <TouchableOpacity
-                style={styles.buttonLeftImage}
-                activeOpacity={0.5}
-                onPress={() => {
-                  setModal2Visible(true);
-                }}
-              >
-                <Image
-                  source={require("./saving.png")}
-                  style={styles.buttonLeftImage}
-                />
-              </TouchableOpacity>
-            </View>
-
-            <View>
+          <View style={styles.topTwoCenter}>
+            <View style={{ flexDirection: "row" }}>
               <View style={styles.centeredView}>
                 <Modal
                   animationType="slide"
                   transparent={true}
-                  visible={modal3Visible}
+                  visible={modal1Visible}
                   onRequestClose={() => {
                     Alert.alert("Modal has been closed.");
                   }}
                 >
                   <View style={styles.newCenter}>
-                    <View style={styles.modalBudgetView}>
-                      <Text style={styles.heading}>Budgeting {"\n"}</Text>
+                    <View style={styles.modalEarningView}>
+                      <Text style={styles.heading}>Earning {"\n"}</Text>
                       <Text style={styles.modalText}>
-                        Budgeting is the practice of creating a plan on how you
-                        are going to spend your money. This allows you to
-                        determine in advance whether you will have enough money
-                        to do the things you need to do and how much money you
-                        will have leftover to spend recreationally or save!
+                        This is your ability to make money. Think about all of
+                        the different ways that you earn money. Do you have an
+                        allowance? A job? Do you receive money as a gift during
+                        different celebrations? Take time to become aware and
+                        write down all of the different ways that you bring in
+                        money.
                       </Text>
 
                       <TouchableHighlight
@@ -194,7 +145,7 @@ export default function App() {
                           backgroundColor: "#FFE694",
                         }}
                         onPress={() => {
-                          setModal3Visible(!modal3Visible);
+                          setModal1Visible(!modal1Visible);
                         }}
                       >
                         <Text style={styles.closeStyle}>Close</Text>
@@ -204,17 +155,69 @@ export default function App() {
                 </Modal>
 
                 <TouchableOpacity
-                  style={styles.buttonBottomImage}
+                  style={styles.buttonLeftImage}
                   activeOpacity={0.5}
                   onPress={() => {
-                    setModal3Visible(true);
+                    setModal2Visible(true);
                   }}
                 >
                   <Image
-                    source={require("./budgeting.png")}
-                    style={styles.buttonBottomImage}
+                    source={require("./saving.png")}
+                    style={styles.buttonLeftImage}
                   />
                 </TouchableOpacity>
+              </View>
+
+              <View>
+                <View style={styles.centeredView}>
+                  <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={modal3Visible}
+                    onRequestClose={() => {
+                      Alert.alert("Modal has been closed.");
+                    }}
+                  >
+                    <View style={styles.newCenter}>
+                      <View style={styles.modalBudgetView}>
+                        <Text style={styles.heading}>Budgeting {"\n"}</Text>
+                        <Text style={styles.modalText}>
+                          Budgeting is the practice of creating a plan on how
+                          you are going to spend your money. This allows you to
+                          determine in advance whether you will have enough
+                          money to do the things you need to do and how much
+                          money you will have leftover to spend recreationally
+                          or save!
+                        </Text>
+
+                        <TouchableHighlight
+                          style={{
+                            ...styles.openButton,
+                            backgroundColor: "#FFE694",
+                          }}
+                          onPress={() => {
+                            setModal3Visible(!modal3Visible);
+                          }}
+                        >
+                          <Text style={styles.closeStyle}>Close</Text>
+                        </TouchableHighlight>
+                      </View>
+                    </View>
+                  </Modal>
+
+                  <TouchableOpacity
+                    style={styles.buttonBottomImage}
+                    activeOpacity={0.5}
+                    onPress={() => {
+                      setModal3Visible(true);
+                    }}
+                  >
+                    <Image
+                      source={require("./budgeting.png")}
+                      style={styles.buttonBottomImage}
+                    />
+                  </TouchableOpacity>
+                </View>
               </View>
             </View>
           </View>
@@ -358,7 +361,6 @@ export default function App() {
                           onChangeText={changeTaskOne}
                           value={enteredTaskOne}
                         />
-
                         <TextInput
                           placeholder="enter task 2"
                           style={styles.taskinput}
@@ -368,6 +370,8 @@ export default function App() {
                         <TextInput
                           placeholder="enter task 3"
                           style={styles.taskinput}
+                          onChangeText={changeTaskThree}
+                          value={enteredTaskThree}
                         />
                       </View>
 
@@ -444,7 +448,7 @@ export default function App() {
                   <Text style={styles.tasks}>
                     {"\t"}
                     {"\u2022"} {enteredTaskOne}
-                    {"\t"} {"\t"} {"\t"} {"\t"} {"\t"} $2.00
+                    {"\t"} {"\t"} {"\t"} {"\t"} {"\t"}$2.00
                   </Text>
                   <Text style={styles.tasks}>
                     {"\t"}
@@ -475,6 +479,8 @@ export default function App() {
           </View>
         </View>
 
+        <Image source={require("./education.png")} style={styles.education} />
+        <Image source={require("./mountains.png")} style={styles.mountains} />
         <View style={styles.inputContainer}></View>
       </ScrollView>
     </SafeAreaView>
@@ -493,7 +499,7 @@ const styles = StyleSheet.create({
   },
   paragraph: {
     marginBottom: 20,
-    fontSize: 16,
+    fontSize: 18,
     color: "black",
     lineHeight: 30,
     marginHorizontal: 10,
@@ -543,15 +549,20 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
   },
-  buttonRightImage: {
-    width: 200,
-    height: 200,
-    marginRight: 0,
-  },
   buttonBottomImage: {
     width: 200,
     height: 200,
-    marginLeft: 0,
+    marginRight: 10,
+  },
+  buttonRightImage: {
+    width: 200,
+    height: 200,
+  },
+  education: {
+    marginTop: 100,
+    marginHorizontal: 60,
+    width: 300,
+    height: 80,
   },
   widgetTitle: {
     height: 72,
@@ -587,8 +598,8 @@ const styles = StyleSheet.create({
   buttonAddTask: {
     height: 400,
     width: 400,
-    marginHorizontal: 60,
-    marginVertical: -35,
+    marginHorizontal: 115,
+    marginVertical: 150,
     alignItems: "center",
   },
   widgetFinanceBody: {
@@ -657,6 +668,12 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: "300",
     marginHorizontal: 10,
+  },
+  mountains: {
+    height: 400,
+    width: 300,
+    marginTop: -80,
+    marginHorizontal: 110,
   },
   bigChunk: {
     marginHorizontal: 10,
@@ -730,6 +747,9 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
+  topTwoCenter: {
+    marginHorizontal: -12,
+  },
   modalTaskView: {
     margin: 20,
     backgroundColor: "#FFC7C7",
@@ -772,10 +792,3 @@ const styles = StyleSheet.create({
     lineHeight: 30,
   },
 });
-
-/*
-var username = prompt("What is your name?");
- var name = window.prompt("type message for user"); 
- will prompt the user to give us specific information
- document.write("Hey" + name + ", How are you today");
-*/
